@@ -2,15 +2,15 @@ import { useState } from "react";
 
 function Todo() {
   const [text, setText] = useState("");
-  const [allTodoList, setAllTodoList] = useState([]);
+  const [allTodoList, setAllTodoList] = useState<any>([]);
   const [editingId, setEditingId] = useState(null);
 
-  const handleAddTodo = (e) => {
+  const handleAddTodo = (e:any) => {
     e.preventDefault();
 
     if (editingId) {
       setAllTodoList(
-        allTodoList.map((item) =>
+        allTodoList.map((item:any) =>
           item.id === editingId ? { ...allTodoList, text } : item,
         ),
       );
@@ -25,13 +25,13 @@ function Todo() {
     }
   };
 
-  const handleEditTodo = (item) => {
+  const handleEditTodo = (item:any) => {
     setText(item.text);
     setEditingId(item.id);
   };
 
-  const handleDeleteTodo = (todo) => {
-    setAllTodoList(allTodoList.filter((item) => item?.id !== todo.id));
+  const handleDeleteTodo = (todo:any) => {
+    setAllTodoList(allTodoList.filter((item:any) => item?.id !== todo.id));
   };
   return (
     <div className="todo-heading">
@@ -59,7 +59,7 @@ function Todo() {
           </thead>
           <tbody>
             {allTodoList &&
-              allTodoList.map((item, index) => {
+              allTodoList.map((item:any, index:number) => {
                 return (
                   <tr>
                     <td>{index + 1} </td>
