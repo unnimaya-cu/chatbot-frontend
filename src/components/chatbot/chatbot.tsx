@@ -19,6 +19,9 @@ const Chatbot = () => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const BaseUrl= import.meta.env.VITE_API_URL
+  // console.log("BaseUrl",BaseUrl);
+  
   const sendMessage = async () => {
     if (!input.trim() || loading) return;
 
@@ -34,7 +37,7 @@ const Chatbot = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:3000/chat", {
+      const response = await fetch(`${BaseUrl}/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
